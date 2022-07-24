@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,8 +57,23 @@ public class MainActivity extends AppCompatActivity {
             connect = connectorsql.connectionclass();
             if (connect!=null){
                 String query="";
+                ArrayList surname= new ArrayList();
                 Statement st=connect.createStatement();
                 ResultSet rs=st.executeQuery(query);
+                rs.next();
+                System.out.print("name1 "+rs.getString("first_name")+", ");
+                surname.add(rs.getString("last_name"));
+                rs.next();
+                System.out.print("name2"+rs.getString("first_name")+", ");
+                surname.add(rs.getString("last_name"));
+                rs.next();
+                System.out.print("name3"+rs.getString("first_name")+", ");
+                surname.add(rs.getString("last_name"));
+                rs.next();
+                System.out.print("name4"+rs.getInt("first_name")+", ");
+                surname.add(rs.getString("last_name"));
+                System.out.print(surname);
+
             } else {
                 connectionResult= "check connection";
             }
